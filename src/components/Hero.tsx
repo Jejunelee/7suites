@@ -70,7 +70,7 @@ export default function Hero() {
                   className="w-full border border-gray-600 bg-transparent px-3 py-2 text-white outline-none focus:border-white cursor-pointer group-hover:border-gray-400 transition-colors"
                   readOnly
                 />
-                <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
+                <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2">
                   <Calendar className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors" />
                 </div>
               </div>
@@ -93,7 +93,7 @@ export default function Hero() {
                   className="w-full border border-gray-600 bg-transparent px-3 py-2 text-white outline-none focus:border-white cursor-pointer group-hover:border-gray-400 transition-colors"
                   readOnly
                 />
-                <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
+                <div className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2">
                   <Calendar className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors" />
                 </div>
               </div>
