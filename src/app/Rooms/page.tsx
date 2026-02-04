@@ -20,25 +20,25 @@ const rooms = [
   {
     title: "Deluxe Twin",
     description: "A peaceful retreat featuring modern interiors, warm ambiance, and thoughtful amenities for a truly relaxing stay.",
-    image: "/main/PHOTO.png",
+    image: "/rooms/1.webp",
     amenities: ["WiFi", "Dining", "Bath", "TV", "Bed"]
   },
   {
     title: "Executive Suite",
     description: "Spacious living area with panoramic views, premium furnishings, and exclusive lounge access for extended stays.",
-    image: "/main/PHOTO.png",
+    image: "/rooms/2.webp",
     amenities: ["WiFi", "Dining", "Bath", "TV", "AC"]
   },
   {
     title: "Garden View Room",
     description: "Overlooking lush landscapes with natural light, private balcony, and serene garden atmosphere.",
-    image: "/main/PHOTO.png",
+    image: "/rooms/3.webp",
     amenities: ["WiFi", "Coffee", "Bath", "TV", "Bed"]
   },
   {
     title: "Family Suite",
     description: "Ideal for groups, featuring interconnected rooms, kid-friendly amenities, and ample living space.",
-    image: "/main/PHOTO.png",
+    image: "/rooms/4.jpg",
     amenities: ["WiFi", "Dining", "Bath", "TV", "Safety"]
   }
 ];

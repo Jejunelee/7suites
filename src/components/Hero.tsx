@@ -51,8 +51,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/10 z-30" />
 
         {/* Booking Bar */}
-        <div className="absolute bottom-15 left-1/2 w-[60%] max-w-6xl -translate-x-1/2 bg-black/80 px-6 py-5 shadow-2xl backdrop-blur-sm z-40">
-          <div className="flex flex-wrap items-end justify-center gap-5 md:flex-nowrap md:justify-between">
+        <div className="absolute bottom-4 sm:bottom-8 md:bottom-15 left-1/2 w-[95%] sm:w-[80%] md:w-[60%] max-w-6xl -translate-x-1/2 bg-black/80 px-4 sm:px-5 md:px-6 py-4 sm:py-5 shadow-2xl backdrop-blur-sm z-40">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-end justify-center gap-4 sm:gap-5 md:flex-nowrap md:justify-between">
             {/* Check-in */}
             <div 
               className="relative w-full flex-col md:w-auto cursor-pointer group"
@@ -122,7 +122,7 @@ export default function Hero() {
             {/* CTA */}
             <button 
               onClick={handleBookingClick}
-              className="flex w-full items-center justify-center gap-2 bg-[#5f7688] px-8 py-3 text-sm font-medium text-white transition-all hover:bg-[#4e6272] hover:scale-105 active:scale-95 md:w-auto cursor-pointer"
+              className="flex w-full sm:w-auto items-center justify-center gap-2 bg-[#5f7688] px-4 sm:px-8 py-3 text-sm font-medium text-white transition-all hover:bg-[#4e6272] hover:scale-105 active:scale-95 md:w-auto cursor-pointer mt-2 sm:mt-0"
             >
               <Search className="h-4 w-4" />
               SEARCH AVAILABILITY
