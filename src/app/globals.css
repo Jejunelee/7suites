@@ -10,11 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Add this line to make font-serif use Newsreader */
+  --font-serif: var(--font-newsreader), serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #CCD0CF;
     --foreground: #ededed;
   }
 }
