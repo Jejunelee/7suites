@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Events() {
   return (
     <section className="w-full bg-[#d9dcd8] py-8 sm:py-10 md:py-14 px-4 sm:px-6">
@@ -35,9 +37,11 @@ export default function Events() {
             </p>
 
             <div className="text-center sm:text-right mt-6 sm:mt-8 md:mt-10">
-              <button className="text-base sm:text-lg md:text-xl bg-[#2f4656] text-white px-8 sm:px-10 md:px-12 py-2 sm:py-2.5 md:py-3 tracking-wide hover:bg-[#243946] transition-colors shadow-md w-full sm:w-auto">
-                LEARN MORE
-              </button>
+            <Link href="/Events">
+  <button className="text-base sm:text-lg md:text-xl bg-[#2f4656] text-white px-8 sm:px-10 md:px-12 py-2 sm:py-2.5 md:py-3 tracking-wide hover:bg-[#243946] transition-colors shadow-md w-full sm:w-auto">
+    LEARN MORE
+  </button>
+</Link>
             </div>
           </div>
         </div>
