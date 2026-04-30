@@ -7,6 +7,12 @@ interface ModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ModalProps) {
+  // Official phone numbers
+  const phoneNumber = "09567523939";
+  const phoneNumberInternational = "+639567523939"; // For tel: links
+  const phoneDisplay = "0956 7523 939"; // Formatted for display
+  const phoneDisplayInternational = "+63 956 7523 939";
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -56,21 +62,21 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
 
           {/* Contact Info - Compact */}
           <div className="mb-4 space-y-3">
-            {/* Phone */}
+            {/* Phone - Local Format */}
             <div className="flex items-center gap-3 rounded-lg bg-black/20 p-3">
               <Phone className="h-4 w-4 flex-shrink-0 text-[#5f7688]" />
               <div className="min-w-0 flex-1">
                 <a
-                  href="tel:09176335562"
+                  href={`tel:${phoneNumberInternational}`}
                   className="block truncate text-base font-medium text-white transition hover:text-[#5f7688]"
                 >
-                  Not Yet Available Number
+                  {phoneDisplay}
                 </a>
                 <p className="text-xs text-gray-400">Call 24/7</p>
               </div>
             </div>
 
-            {/* Email */}
+            {/* Email - Keep as placeholder or update if needed */}
             <div className="flex items-center gap-3 rounded-lg bg-black/20 p-3">
               <Mail className="h-4 w-4 flex-shrink-0 text-[#5f7688]" />
               <div className="min-w-0 flex-1">
@@ -78,7 +84,7 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
                   href="mailto:hello@sevensuites.com"
                   className="block truncate text-base font-medium text-white transition hover:text-[#5f7688]"
                 >
-                  Not Yet Available Email
+                  Email Not Available
                 </a>
                 <p className="text-xs text-gray-400">Email us</p>
               </div>
@@ -92,7 +98,7 @@ export default function ContactModal({ isOpen, onClose }: ModalProps) {
 
           {/* Single Action Button */}
           <button
-            onClick={() => window.open('tel:09176335562', '_self')}
+            onClick={() => window.open(`tel:${phoneNumberInternational}`, '_self')}
             className="w-full bg-[#5f7688] py-2.5 text-sm font-medium text-white transition hover:bg-[#4e6272]"
           >
             CALL NOW

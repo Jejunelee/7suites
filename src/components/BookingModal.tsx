@@ -7,6 +7,10 @@ interface ModalProps {
 }
 
 export default function BookingModal({ isOpen, onClose }: ModalProps) {
+  // Official phone number (local format only)
+  const phoneNumber = "0956 7523 939";
+  const phoneNumberRaw = "09567523939"; // For tel: link
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -78,10 +82,10 @@ export default function BookingModal({ isOpen, onClose }: ModalProps) {
                 <div>
                   <p className="text-xs tracking-widest text-gray-400">PHONE</p>
                   <a
-                    href="tel:09176335562"
+                    href={`tel:${phoneNumberRaw}`}
                     className="text-lg font-medium text-white transition hover:text-[#5f7688]"
                   >
-                    Not Yet Available Number
+                    {phoneNumber}
                   </a>
                 </div>
               </div>
@@ -94,10 +98,10 @@ export default function BookingModal({ isOpen, onClose }: ModalProps) {
                 <div>
                   <p className="text-xs tracking-widest text-gray-400">EMAIL</p>
                   <a
-                    href="mailto:blank@sevensuites.com"
+                    href="mailto:hello@sevensuites.com"
                     className="text-lg font-medium text-white transition hover:text-[#5f7688]"
                   >
-                    blank@sevensuites.com
+                    hello@sevensuites.com
                   </a>
                 </div>
               </div>
