@@ -7,25 +7,54 @@ const rooms = [
     title: "Deluxe Double",
     size: "2 Guest Capacity",
     bed: "1 queen bed",
-    image: "/rooms/1.webp",
+    images: [
+      "/rooms/Deluxe-Double/DD-1.jpg",
+      "/rooms/Deluxe-Double/DD-2.jpg",
+      "/rooms/Deluxe-Double/DD-3.jpg",
+      "/rooms/Deluxe-Double/DD-4.jpg",
+      "/rooms/Deluxe-Double/DD-5.jpg",
+      "/rooms/Deluxe-Double/DD-6.jpg"
+    ]
   },
   {
     title: "Deluxe Twin",
     size: "2 Guest Capacity",
-    bed: "1 queen bed",
-    image: "/rooms/2.webp",
+    bed: "2 twin beds",
+    images: [
+      "/rooms/Deluxe-Twin/DT-1.jpg",
+      "/rooms/Deluxe-Twin/DT-2.jpg",
+      "/rooms/Deluxe-Twin/DT-3.jpg",
+      "/rooms/Deluxe-Twin/DT-4.jpg",
+      "/rooms/Deluxe-Twin/DT-5.jpg",
+      "/rooms/Deluxe-Twin/DT-6.jpg",
+      "/rooms/Deluxe-Twin/DT-7.jpg"
+    ]
   },
   {
     title: "Executive",
     size: "2 Guest Capacity",
-    bed: "1 queen bed",
-    image: "/rooms/3.webp",
+    bed: "1 king bed",
+    images: [
+      "/rooms/Executive/Executive1.jpg",
+      "/rooms/Executive/Executive2.jpg",
+      "/rooms/Executive/Executive3.jpg",
+      "/rooms/Executive/Executive4.jpg",
+      "/rooms/Executive/Executive5.jpg",
+      "/rooms/Executive/Executive6.jpg"
+    ]
   },
   {
-    title: "VIP",
-    size: "2 Guest Capacity",
-    bed: "1 queen bed",
-    image: "/rooms/4.jpg",
+    title: "VIP Suite",
+    size: "4 Guest Capacity",
+    bed: "1 king bed + sofa bed",
+    images: [
+      "/rooms/VIP/VIP-1.jpg",
+      "/rooms/VIP/VIP-2.jpg",
+      "/rooms/VIP/VIP-3.jpg",
+      "/rooms/VIP/VIP-4.jpg",
+      "/rooms/VIP/VIP-5.jpg",
+      "/rooms/VIP/VIP-6.jpg"
+    ]
   },
 ];
 
@@ -34,6 +63,7 @@ export default function Rooms() {
   const [cardsToShow, setCardsToShow] = useState(3);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [hoveredImages, setHoveredImages] = useState<{ [key: number]: number }>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
   // The minimum distance required to trigger a swipe
@@ -135,6 +165,22 @@ export default function Rooms() {
     document.addEventListener('mouseup', onMouseUp);
   };
 
+  const handlePrevImage = (roomIndex: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setHoveredImages(prev => ({
+      ...prev,
+      [roomIndex]: ((prev[roomIndex] || 0) - 1 + rooms[roomIndex].images.length) % rooms[roomIndex].images.length
+    }));
+  };
+
+  const handleNextImage = (roomIndex: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setHoveredImages(prev => ({
+      ...prev,
+      [roomIndex]: ((prev[roomIndex] || 0) + 1) % rooms[roomIndex].images.length
+    }));
+  };
+
   return (
     <section className="w-full bg-gradient-to-b from-[#07131b] to-[#02080d] py-8 sm:py-10 md:py-12 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto relative">
@@ -192,13 +238,55 @@ export default function Rooms() {
                   'w-1/3 min-w-[33.333%]'
                 }`}
               >
-                <div className="bg-[#f7f6f1] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transition-all duration-300">
-                  <div className="aspect-square w-full overflow-hidden">
+                <div className="bg-[#f7f6f1] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transition-all duration-300 group">
+                  <div className="aspect-square w-full overflow-hidden relative">
                     <img
-                      src={room.image}
+                      src={room.images[hoveredImages[index] || 0]}
                       alt={room.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover transition-transform duration-300"
                     />
+                    
+                    {/* Image Navigation Controls - Visible on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                      {/* Previous button */}
+                      <button
+                        onClick={(e) => handlePrevImage(index, e)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center text-xl"
+                      >
+                        ‹
+                      </button>
+                      
+                      {/* Next button */}
+                      <button
+                        onClick={(e) => handleNextImage(index, e)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center text-xl"
+                      >
+                        ›
+                      </button>
+                      
+                      {/* Image counter */}
+                      <div className="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
+                        {(hoveredImages[index] || 0) + 1} / {room.images.length}
+                      </div>
+                      
+                      {/* Dot indicators */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        {room.images.map((_, imgIdx) => (
+                          <button
+                            key={imgIdx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setHoveredImages(prev => ({ ...prev, [index]: imgIdx }));
+                            }}
+                            className={`w-1.5 h-1.5 rounded-full transition-all ${
+                              (hoveredImages[index] || 0) === imgIdx
+                                ? 'bg-white w-3'
+                                : 'bg-white/50'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
                   <div className="p-4 sm:p-5 md:p-6 text-center">

@@ -7,9 +7,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function Dining() {
   // Dining carousel images - adjust these paths to match your actual images
   const diningPhotos = [
-    "/dining/1.webp",  // or .png/.webp based on your files
-    "/dining/2.webp",
-    "/dining/3.webp",
+    "/dining/Dining-1.jpg",  // or .png/.webp based on your files
+    "/dining/Dining-2.jpg",
+    "/dining/Dining-3.webp",
     // Add more images as needed
   ];
 
@@ -39,7 +39,7 @@ export default function Dining() {
       {/* HERO - Keep left-aligned like original */}
       <div className="relative h-[240px] sm:h-[280px] md:h-[320px]">
         <Image
-          src="/hero/6.webp"
+          src="/dining/Dining-1.jpg"
           alt="Dining area"
           fill
           priority

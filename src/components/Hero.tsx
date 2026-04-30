@@ -8,7 +8,21 @@ export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const images = Array.from({ length: 8 }, (_, i) => `/hero/${i + 1}.webp`);
+  // ONLY list the images that actually exist in your /public/hero/ folder
+  const images = [
+    '/hero/1-1.webp',
+    '/hero/2-1.webp',
+    '/hero/3-1.webp',
+    '/hero/4-1.webp',
+    '/hero/5-1.jpg',
+    '/hero/6-1.jpg',
+    '/hero/7-1.jpg',
+    '/hero/8-1.png',
+    // Add only the ones you have, mixing formats as needed:
+    // '/hero/3.png',
+    // '/hero/4.jpg',
+    // etc.
+  ];
 
   const handleBookingClick = () => {
     setIsModalOpen(true);
@@ -16,6 +30,7 @@ export default function Hero() {
 
   // Auto-rotate images every 5 seconds
   useEffect(() => {
+    if (images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
@@ -27,7 +42,6 @@ export default function Hero() {
       <section className="relative h-[91vh] w-full overflow-hidden">
         {/* Background Image Container */}
         <div className="relative h-full w-full">
-          {/* All images stacked */}
           {images.map((src, index) => (
             <div
               key={src}
@@ -47,7 +61,7 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Dark overlay - ensure it's above all images */}
+        {/* Rest of your component remains the same */}
         <div className="absolute inset-0 bg-black/10 z-30" />
 
         {/* Booking Bar */}

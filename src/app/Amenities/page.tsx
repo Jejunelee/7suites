@@ -11,7 +11,7 @@ const amenities = [
     title: "Swimming Pool",
     description:
       "Provides a refreshing space for guests to relax, unwind, and enjoy quiet moments throughout their stay.",
-    image: "/amenities/pool.webp"  // Updated path
+    image: "/amenities/pool/Pool-1.png"  // Updated path
   }
 ];
 
